@@ -6,15 +6,14 @@
   <meta name="keywords" content=" 索引 ">
   <meta name="description" content="19-数据库索引的原理 | 任子斌的技术博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="目前大多数数据库系统及文件系统都采用B树，或B+树作为索引结构不同存储引擎对索引的实现方式是不同的">
-<meta name="keywords" content="索引">
+<meta name="description" content="思路矩阵是有序的，从左下角来看，向上数字递减，向右数字递增， * 因此从左下角开始查找，当要查找数字比左下角数字大时。右移 * 要查找数字比左下角数字小时，上移  代码public class Solution {     public boolean Find(int target, int [][] array) {         int rows = array.length;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="19-数据库索引的原理">
-<meta property="og:url" content="https:&#x2F;&#x2F;renzibin.github.io&#x2F;2019&#x2F;09&#x2F;15&#x2F;19-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E7%9A%84%E5%8E%9F%E7%90%86&#x2F;index.html">
+<meta property="og:title" content="20-算法题:寻找二位数组中，某个特定值">
+<meta property="og:url" content="https:&#x2F;&#x2F;renzibin.github.io&#x2F;2020&#x2F;01&#x2F;25&#x2F;20-%E7%AE%97%E6%B3%95%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="任子斌的技术博客">
-<meta property="og:description" content="目前大多数数据库系统及文件系统都采用B树，或B+树作为索引结构不同存储引擎对索引的实现方式是不同的">
+<meta property="og:description" content="思路矩阵是有序的，从左下角来看，向上数字递减，向右数字递增， * 因此从左下角开始查找，当要查找数字比左下角数字大时。右移 * 要查找数字比左下角数字小时，上移  代码public class Solution {     public boolean Find(int target, int [][] array) {         int rows = array.length;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-18T01:31:00.251Z">
+<meta property="og:updated_time" content="2020-01-28T02:26:11.066Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -134,19 +133,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(20)</small></div></li>
+    <li><div class="all active">全部文章<small>(21)</small></div></li>
     
         
             
-            <li><div data-rel="java"> java<small>(3)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="算法"> 算法<small>(3)</small></div>
+            <li><div data-rel="算法"> 算法<small>(5)</small></div>
                 
             </li>
             
@@ -162,7 +153,7 @@
     
         
             
-            <li><div data-rel="spring"> spring<small>(2)</small></div>
+            <li><div data-rel="java"> java<small>(3)</small></div>
                 
             </li>
             
@@ -171,6 +162,14 @@
         
             
             <li><div data-rel="数据库"> 数据库<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="spring"> spring<small>(2)</small></div>
                 
             </li>
             
@@ -202,7 +201,7 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="20">
+<input type="hidden" id="yelog_site_posts_number" value="21">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -254,14 +253,6 @@
     
     <nav id="title-list-nav">
         
-        <a  class="java "
-           href="/2019/09/06/10-%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="10-接口与抽象类的区别">10-接口与抽象类的区别</span>
-            <span class="post-date" title="2019-09-06 12:31:43">2019/09/06</span>
-        </a>
-        
         <a  class="算法 "
            href="/2019/07/05/1/"
            data-tag="杂谈"
@@ -278,28 +269,12 @@
             <span class="post-date" title="2019-09-07 12:59:59">2019/09/07</span>
         </a>
         
-        <a  class="多线程 "
-           href="/2019/09/10/14-%E6%82%B2%E8%A7%82%E9%94%81%E4%B8%8E%E4%B9%90%E8%A7%82%E9%94%81/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="14-悲观锁与乐观锁">14-悲观锁与乐观锁</span>
-            <span class="post-date" title="2019-09-10 18:09:40">2019/09/10</span>
-        </a>
-        
         <a  class="java "
-           href="/2019/09/12/16-fail-fast%E6%9C%BA%E5%88%B6/"
-           data-tag="集合类"
-           data-author="" >
-            <span class="post-title" title="16-fail-fast机制">16-fail-fast机制</span>
-            <span class="post-date" title="2019-09-12 19:27:01">2019/09/12</span>
-        </a>
-        
-        <a  class="多线程 "
-           href="/2019/09/14/18-%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/"
+           href="/2019/09/06/10-%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="18-缓存一致性问题">18-缓存一致性问题</span>
-            <span class="post-date" title="2019-09-14 22:44:14">2019/09/14</span>
+            <span class="post-title" title="10-接口与抽象类的区别">10-接口与抽象类的区别</span>
+            <span class="post-date" title="2019-09-06 12:31:43">2019/09/06</span>
         </a>
         
         <a  class="多线程 "
@@ -308,6 +283,14 @@
            data-author="" >
             <span class="post-title" title="12-wait（）notify（）notifyAll（）">12-wait（）notify（）notifyAll（）</span>
             <span class="post-date" title="2019-09-08 14:22:51">2019/09/08</span>
+        </a>
+        
+        <a  class="多线程 "
+           href="/2019/09/10/14-%E6%82%B2%E8%A7%82%E9%94%81%E4%B8%8E%E4%B9%90%E8%A7%82%E9%94%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="14-悲观锁与乐观锁">14-悲观锁与乐观锁</span>
+            <span class="post-date" title="2019-09-10 18:09:40">2019/09/10</span>
         </a>
         
         <a  class="多线程 "
@@ -327,6 +310,14 @@
         </a>
         
         <a  class="java "
+           href="/2019/09/12/16-fail-fast%E6%9C%BA%E5%88%B6/"
+           data-tag="集合类"
+           data-author="" >
+            <span class="post-title" title="16-fail-fast机制">16-fail-fast机制</span>
+            <span class="post-date" title="2019-09-12 19:27:01">2019/09/12</span>
+        </a>
+        
+        <a  class="java "
            href="/2019/09/13/17-NIO%E5%92%8CBIO/"
            data-tag=""
            data-author="" >
@@ -334,12 +325,12 @@
             <span class="post-date" title="2019-09-13 21:30:12">2019/09/13</span>
         </a>
         
-        <a  class="spring "
-           href="/2019/07/10/2/"
+        <a  class="多线程 "
+           href="/2019/09/14/18-%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="2-SpingBoot框架">2-SpingBoot框架</span>
-            <span class="post-date" title="2019-07-10 11:17:41">2019/07/10</span>
+            <span class="post-title" title="18-缓存一致性问题">18-缓存一致性问题</span>
+            <span class="post-date" title="2019-09-14 22:44:14">2019/09/14</span>
         </a>
         
         <a  class="数据库 "
@@ -350,15 +341,7 @@
             <span class="post-date" title="2019-09-15 10:04:25">2019/09/15</span>
         </a>
         
-        <a  class="jvm虚拟机 "
-           href="/2019/07/28/4/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="4-jvm虚拟机，docker使用">4-jvm虚拟机，docker使用</span>
-            <span class="post-date" title="2019-07-28 13:33:40">2019/07/28</span>
-        </a>
-        
-        <a  class=""
+        <a  class="算法 "
            href="/2020/01/25/20-%E7%AE%97%E6%B3%95%E9%A2%98/"
            data-tag=""
            data-author="" >
@@ -367,11 +350,35 @@
         </a>
         
         <a  class="spring "
+           href="/2019/07/10/2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="2-SpingBoot框架">2-SpingBoot框架</span>
+            <span class="post-date" title="2019-07-10 11:17:41">2019/07/10</span>
+        </a>
+        
+        <a  class="算法 "
+           href="/2020/01/28/21-%E7%AE%97%E6%B3%95%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="21-算法题-字符串中的空格替换">21-算法题-字符串中的空格替换</span>
+            <span class="post-date" title="2020-01-28 10:24:17">2020/01/28</span>
+        </a>
+        
+        <a  class="spring "
            href="/2019/07/17/3/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="3-SpingBoot框架">3-SpingBoot框架</span>
             <span class="post-date" title="2019-07-17 08:44:20">2019/07/17</span>
+        </a>
+        
+        <a  class="jvm虚拟机 "
+           href="/2019/07/28/4/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="4-jvm虚拟机，docker使用">4-jvm虚拟机，docker使用</span>
+            <span class="post-date" title="2019-07-28 13:33:40">2019/07/28</span>
         </a>
         
         <a  class="jvm虚拟机 "

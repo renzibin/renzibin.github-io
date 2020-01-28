@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>7-算法：一道依图sp秋招笔试题 | 任子斌的技术博客</title>
+  <title>21-算法题-字符串中的空格替换 | 任子斌的技术博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="7-算法：一道依图sp秋招笔试题 | 任子斌的技术博客">
+  <meta name="description" content="21-算法题-字符串中的空格替换 | 任子斌的技术博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="思路矩阵是有序的，从左下角来看，向上数字递减，向右数字递增， * 因此从左下角开始查找，当要查找数字比左下角数字大时。右移 * 要查找数字比左下角数字小时，上移  代码public class Solution {     public boolean Find(int target, int [][] array) {         int rows = array.length;">
 <meta property="og:type" content="article">
@@ -433,9 +433,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-7" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-21-算法题-字符串中的空格替换" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">7-算法：一道依图sp秋招笔试题</h1>
+        <h1 class="article-title">21-算法题-字符串中的空格替换</h1>
     
     <div class="article-meta">
         
@@ -451,7 +451,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-18 09:31:00'>2019-08-14 17:06</time>
+        创建时间:<time class="date" title='更新时间: 2020-01-28 10:53:43'>2020-01-28 10:24</time>
         
     </div>
     <div class="article-meta">
@@ -484,7 +484,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例：运行输入"><span class="toc-text">例：运行输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例：运行输出"><span class="toc-text">例：运行输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谨以此码献给刚刚离开的思科（纯手工艺品）。"><span class="toc-text">谨以此码献给刚刚离开的思科（纯手工艺品）。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行输入"><span class="toc-text">运行输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行输出"><span class="toc-text">运行输出</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#言简意赅版本"><span class="toc-text">言简意赅版本</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -499,102 +499,52 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><pre><code class="bash">一维直线上有n个点，坐标都是整数，有m个区间，每个区间有两个端点left，right
-left&lt;=right,left,right都是整数，对于每个区间，有多少个点在区间内呢？</code></pre>
-<h2 id="例：运行输入"><a href="#例：运行输入" class="headerlink" title="例：运行输入"></a>例：运行输入</h2><pre><code class="bash">2
-10 5
-0 1 2 3 4 5 6 7 8 9
-0 5
-10 20
--5 -3
-7 7
-100 105
-5 1
-1 1 1 1 1 
-0 2
+        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code class="bash">问题1：替换字符串，是在原来的字符串上做替换，还是新开辟一个字符串做替换！
+问题2：在当前字符串替换，怎么替换才更有效率（不考虑java里现有的replace方法）。
+      从前往后替换，后面的字符要不断往后移动，要多次移动，所以效率低下
+      从后往前，先计算需要多少空间，然后从后往前移动，则每个字符只为移动一次，这样效率更高一点。
 </code></pre>
-<h2 id="例：运行输出"><a href="#例：运行输出" class="headerlink" title="例：运行输出"></a>例：运行输出</h2><pre><code class="bash">case #1
-6
-0
-0
-1
-0
-case #2
-5</code></pre>
-<h2 id="谨以此码献给刚刚离开的思科（纯手工艺品）。"><a href="#谨以此码献给刚刚离开的思科（纯手工艺品）。" class="headerlink" title="谨以此码献给刚刚离开的思科（纯手工艺品）。"></a>谨以此码献给刚刚离开的思科（纯手工艺品）。</h2><pre><code class="bash">import java.util.Scanner;
-public class test {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int num=input.nextInt();
-        int [][]result=new int [num][];
-        for(int i=0;i&lt;num;i++) {
-            int length=input.nextInt();
-            int number=input.nextInt();
-            int [] array1=new int[length];
-            for (int n=0;n&lt;length;n++){
-                array1[n]=input.nextInt();
-            }
-            int m=0;
-            result[i]=new int [number];
-            while (m&lt;number){
-                int left = input.nextInt();
-                int rirht = input.nextInt();
-                result[i][m]=GetNumberOfK(array1,left,rirht);
-                m++;
-            }
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="bash">public class Solution {
+    public String replaceSpace(StringBuffer str) {
+        int spacenum = 0;//spacenum为计算空格数
+        for(int i=0;i&lt;str.length();i++){
+            if(str.charAt(i)==&#39; &#39;)
+                spacenum++;
         }
-        for (int l=1;l&lt;=num;l++){
-            System.out.println(&quot;case #&quot;+l);
-            for (int b=0;b&lt;result[l-1].length;b++){
-                System.out.println(result[l-1][b]);
-            }
+        int indexold = str.length()-1; //indexold为为替换前的str下标
+        int newlength = str.length() + spacenum*2;//计算空格转换成%20之后的str长度
+        int indexnew = newlength-1;//indexold为为把空格替换为%20后的str下标
+        str.setLength(newlength);//使str的长度扩大到转换成%20之后的长度,防止下标越界
+        for(;indexold&gt;=0 &amp;&amp; indexold&lt;newlength;--indexold){ 
+                if(str.charAt(indexold) == &#39; &#39;){  //
+                str.setCharAt(indexnew--, &#39;0&#39;);
+                str.setCharAt(indexnew--, &#39;2&#39;);
+                str.setCharAt(indexnew--, &#39;%&#39;);
+                }else{
+                    str.setCharAt(indexnew--, str.charAt(indexold));
+                }
         }
-    }
-    public static int GetNumberOfK(int [] array , int left,int right) {
-        if (left &gt; right) {
-            return 0;
-        }
-        int min = array[0];
-        int length=array.length;
-        int max = array[length-1];
-        if (right &lt; min || left &gt; max) {
-            return 0;
-        } else if (left &lt;= min &amp;&amp; right &gt;= max) {
-            return array.length;
-        } else if (left &gt;= min &amp;&amp; right &lt;= max) {
-            return right - left + 1;
-        } else if (left &lt; min) {
-            return right - min + 1;
-        } else if (right &gt; max) {
-            return max - left + 1;
-        }else {
-            return 0;
-        }
+        return str.toString();
     }
 }</code></pre>
-<h2 id="运行输入"><a href="#运行输入" class="headerlink" title="运行输入"></a>运行输入</h2><pre><code class="bash">2
-10 5
-0 1 2 3 4 5 6 7 8 9
-0 5
-10 20
--5 -3
-7 7
-100 105
-5 1
-1 1 1 1 1 
-0 2
-
-</code></pre>
-<h2 id="运行输出"><a href="#运行输出" class="headerlink" title="运行输出"></a>运行输出</h2><pre><code class="bash">case #1
-6
-0
-0
-1
-0
-case #2
-5
-
-Process finished with exit code 0</code></pre>
+<h2 id="言简意赅版本"><a href="#言简意赅版本" class="headerlink" title="言简意赅版本"></a>言简意赅版本</h2><pre><code class="bash">public class Solution {
+    public String replaceSpace(StringBuffer str) {
+        if(str==null){
+            return null;
+        }
+       StringBuilder newStr = new StringBuilder();
+        for(int i=0;i&lt;str.length();i++){
+            if(str.charAt(i)==&#39; &#39;){
+                newStr.append(&#39;%&#39;);
+                newStr.append(&#39;2&#39;);
+                newStr.append(&#39;0&#39;);
+            }else{
+                newStr.append(str.charAt(i));
+            }
+        }
+        return newStr.toString();
+    }
+}</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 296772059@qq.com </span>
@@ -608,12 +558,12 @@ Process finished with exit code 0</code></pre>
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>7-算法：一道依图sp秋招笔试题</p>
+    <p><span class="copy-title">文章标题:</span>21-算法题-字符串中的空格替换</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" target="_blank" rel="noopener" title="任子斌">任子斌</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-14, 17:06:42</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-18, 09:31:00</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/14/7/" title="7-算法：一道依图sp秋招笔试题">https://renzibin.github.io/2019/08/14/7/</a>
+    <p><span class="copy-title">发布时间:</span>2020-01-28, 10:24:17</p>
+    <p><span class="copy-title">最后更新:</span>2020-01-28, 10:53:43</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/28/21-%E7%AE%97%E6%B3%95%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2/" title="21-算法题-字符串中的空格替换">https://renzibin.github.io/2020/01/28/21-%E7%AE%97%E6%B3%95%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
