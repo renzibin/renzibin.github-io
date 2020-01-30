@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>21-算法题-字符串中的空格替换 | 任子斌的技术博客</title>
+  <title>23-算法题-重建二叉树 | 任子斌的技术博客</title>
   <meta name="keywords" content="">
-  <meta name="description" content="21-算法题-字符串中的空格替换 | 任子斌的技术博客">
+  <meta name="description" content="23-算法题-重建二叉树 | 任子斌的技术博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="思路问题1：替换字符串，是在原来的字符串上做替换，还是新开辟一个字符串做替换！ 问题2：在当前字符串替换，怎么替换才更有效率（不考虑java里现有的replace方法）。       从前往后替换，后面的字符要不断往后移动，要多次移动，所以效率低下       从后往前，先计算需要多少空间，然后从后往前移动，则每个字符只为移动一次，这样效率更高一点。  代码public class Solutio">
 <meta property="og:type" content="article">
@@ -449,25 +449,19 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-21-算法题-字符串中的空格替换" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-23-算法题-重建二叉树" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">21-算法题-字符串中的空格替换</h1>
+        <h1 class="article-title">23-算法题-重建二叉树</h1>
     
     <div class="article-meta">
         
         
-        
-        <span class="book">
-            
-                <a href="javascript:" target="_blank" data-rel="算法 noopener">算法</a>
-            
-        </span>
         
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-01-28 10:53:43'>2020-01-28 10:24</time>
+        创建时间:<time class="date" title='更新时间: 2020-01-30 11:26:09'>2020-01-30 10:53</time>
         
     </div>
     <div class="article-meta">
@@ -500,7 +494,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#言简意赅版本"><span class="toc-text">言简意赅版本</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -515,50 +509,24 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code class="bash">问题1：替换字符串，是在原来的字符串上做替换，还是新开辟一个字符串做替换！
-问题2：在当前字符串替换，怎么替换才更有效率（不考虑java里现有的replace方法）。
-      从前往后替换，后面的字符要不断往后移动，要多次移动，所以效率低下
-      从后往前，先计算需要多少空间，然后从后往前移动，则每个字符只为移动一次，这样效率更高一点。
+        <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code class="bash">
+链表从尾到头输出，利用递归实现，不使用库函数直接printf输出的时候用递归比较好
 </code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="bash">public class Solution {
-    public String replaceSpace(StringBuffer str) {
-        int spacenum = 0;//spacenum为计算空格数
-        for(int i=0;i&lt;str.length();i++){
-            if(str.charAt(i)==&#39; &#39;)
-                spacenum++;
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="bash">import java.util.Stack;
+import java.util.ArrayList;
+public class Solution {
+    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+        while (listNode != null) {
+            stack.push(listNode.val);
+            listNode = listNode.next;
         }
-        int indexold = str.length()-1; //indexold为为替换前的str下标
-        int newlength = str.length() + spacenum*2;//计算空格转换成%20之后的str长度
-        int indexnew = newlength-1;//indexold为为把空格替换为%20后的str下标
-        str.setLength(newlength);//使str的长度扩大到转换成%20之后的长度,防止下标越界
-        for(;indexold&gt;=0 &amp;&amp; indexold&lt;newlength;--indexold){ 
-                if(str.charAt(indexold) == &#39; &#39;){  //
-                str.setCharAt(indexnew--, &#39;0&#39;);
-                str.setCharAt(indexnew--, &#39;2&#39;);
-                str.setCharAt(indexnew--, &#39;%&#39;);
-                }else{
-                    str.setCharAt(indexnew--, str.charAt(indexold));
-                }
+
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        while (!stack.isEmpty()) {
+            list.add(stack.pop());
         }
-        return str.toString();
-    }
-}</code></pre>
-<h2 id="言简意赅版本"><a href="#言简意赅版本" class="headerlink" title="言简意赅版本"></a>言简意赅版本</h2><pre><code class="bash">public class Solution {
-    public String replaceSpace(StringBuffer str) {
-        if(str==null){
-            return null;
-        }
-       StringBuilder newStr = new StringBuilder();
-        for(int i=0;i&lt;str.length();i++){
-            if(str.charAt(i)==&#39; &#39;){
-                newStr.append(&#39;%&#39;);
-                newStr.append(&#39;2&#39;);
-                newStr.append(&#39;0&#39;);
-            }else{
-                newStr.append(str.charAt(i));
-            }
-        }
-        return newStr.toString();
+        return list;       
     }
 }</code></pre>
 
@@ -574,12 +542,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>21-算法题-字符串中的空格替换</p>
+    <p><span class="copy-title">文章标题:</span>23-算法题-重建二叉树</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" target="_blank" rel="noopener" title="任子斌">任子斌</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-01-28, 10:24:17</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-28, 10:53:43</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/28/21-%E7%AE%97%E6%B3%95%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2/" title="21-算法题-字符串中的空格替换">https://renzibin.github.io/2020/01/28/21-%E7%AE%97%E6%B3%95%E9%A2%98-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2/</a>
+    <p><span class="copy-title">发布时间:</span>2020-01-30, 10:53:58</p>
+    <p><span class="copy-title">最后更新:</span>2020-01-30, 11:26:09</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/30/23-%E7%AE%97%E6%B3%95%E9%A2%98-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/" title="23-算法题-重建二叉树">https://renzibin.github.io/2020/01/30/23-%E7%AE%97%E6%B3%95%E9%A2%98-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
